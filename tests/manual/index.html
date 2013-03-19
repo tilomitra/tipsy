@@ -86,7 +86,7 @@
             
             <div id="demoButtons">
                 <p>
-                    <button id="topbutton" class="yui3-button yui3-tooltip-trigger" data-placement="above" rel="tipsy" data-content="YUI rocks.">Click to activate a tooltip.</button>
+                    <button id="topbutton" class="yui3-button yui3-tooltip-trigger" data-placement="above" rel="click-tipsy" data-content="YUI rocks.">Click to activate a tooltip.</button>
                 </p>
                 <p>
                     <button id="leftbutton" class="yui3-button yui3-tooltip-trigger" data-placement="left" rel="tipsy" data-content="Ut eget nunc nulla. <br/>Curabitur mollis, purus eu sodales luctus<br/>, metus sem sagittis justo">Tooltip positioned to the left with a lot of content</button>
@@ -124,12 +124,22 @@
                 
                 filter: 'raw',
             
-            }).use("gallery-tipsy", function(Y) {
-                var tt = new Y.Tipsy({
+            }).use("gallery-tipsy", 'event-outside', function(Y) {
+                var regularTipsy = new Y.Tipsy({
                     selector: "[rel='tipsy']",
                     zIndex: 2
                 });
-                tt.render();          
+                regularTipsy.render();  
+
+
+                var clickTipsy = new Y.Tipsy({
+                    selector: "[rel='click-tipsy']",
+                    zIndex: 2,
+                    showOn: { selector: '#topbutton', events: 'click' },
+                    hideOn: { selector: '#topbutton', events: 'clickoutside' },
+                });
+
+                clickTipsy.render();            
             });
         </script>
         <script type="text/javascript" src="//use.typekit.net/ajf8ggy.js"></script>
