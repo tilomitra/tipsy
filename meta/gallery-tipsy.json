@@ -1,0 +1,7 @@
+{
+    "gallery-tipsy": {
+        "requires": [
+            "yui-base"
+        ]
+    }
+}
