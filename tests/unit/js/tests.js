@@ -78,6 +78,43 @@ YUI.add('module-tests', function(Y) {
         },
 
 
+        'test content': function () {
+            this.tipsy = createTipsy({
+                selector: "#someContent2",
+                content: "Hello World!"
+            });
+
+            this.tipsy.render();
+            this.tipsy.showTooltip(Y.one('#someContent2'));
+
+            Y.Assert.areSame("Hello World!", Y.one('.yui3-tipsy-content').getContent(), 'Tipsy content should be the same');
+
+        },
+
+        'test data-placement': function () {
+            this.tipsy = createTipsy({
+                selector: "#bottombutton"
+            });
+
+            this.tipsy.render();
+            this.tipsy.showTooltip(Y.one('#bottombutton'));
+
+            Y.Assert.areSame(true, Y.one('.yui3-tipsy .yui3-widget-pointer').hasClass('yui3-widget-pointer-up'), 'Tipsy should have an up arrow');
+        },
+
+        'test placement attribute': function () {
+            this.tipsy = createTipsy({
+                selector: "#someContent3",
+                placement: 'left'
+            });
+
+            this.tipsy.render();
+            this.tipsy.showTooltip(Y.one('#someContent3'));
+
+            Y.Assert.areSame(true, Y.one('.yui3-tipsy .yui3-widget-pointer').hasClass('yui3-widget-pointer-right'), 'Tipsy should have a right arrow');
+        }
+
+
         /*  
             SIMULATED EVENTS TESTS 
             These tests are a bit more functional. 
@@ -138,44 +175,7 @@ YUI.add('module-tests', function(Y) {
 
             Y.Assert.areSame(false, Y.one('.yui3-tipsy').hasClass('yui3-tipsy-in'), 'Tipsy should not have the yui3-tipsy-in class');
             Y.Assert.areSame(false, this.tipsy.get('visible'), 'Tipsy should have {visible: false}');
-        },
-
-        'test content': function () {
-            this.tipsy = createTipsy({
-                selector: "#someContent2",
-                content: "Hello World!"
-            });
-
-            this.tipsy.render();
-            this.tipsy.showTooltip(Y.one('#someContent2'));
-
-            Y.Assert.areSame("Hello World!", Y.one('.yui3-tipsy-content').getContent(), 'Tipsy content should be the same');
-
-        },
-
-        'test data-placement': function () {
-            this.tipsy = createTipsy({
-                selector: "#bottombutton"
-            });
-
-            this.tipsy.render();
-            this.tipsy.showTooltip(Y.one('#bottombutton'));
-
-            Y.Assert.areSame(true, Y.one('.yui3-tipsy .yui3-widget-pointer').hasClass('yui3-widget-pointer-up'), 'Tipsy should have an up arrow');
-        },
-
-        'test placement attribute': function () {
-            this.tipsy = createTipsy({
-                selector: "#someContent3",
-                placement: 'left'
-            });
-
-            this.tipsy.render();
-            this.tipsy.showTooltip(Y.one('#someContent3'));
-
-            Y.Assert.areSame(true, Y.one('.yui3-tipsy .yui3-widget-pointer').hasClass('yui3-widget-pointer-right'), 'Tipsy should have a right arrow');
         }
-
 
     }));
 
