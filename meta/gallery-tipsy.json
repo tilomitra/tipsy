@@ -1,7 +1,13 @@
 {
     "gallery-tipsy": {
         "requires": [
-            "yui-base"
-        ]
+            "yui-base",
+            "widget", 
+            "widget-position-align", 
+            "gallery-widget-pointer", 
+            "widget-stack", 
+            "classnamemanager"
+        ],
+        "skinnable": true
     }
 }
