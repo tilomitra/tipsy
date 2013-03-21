@@ -10,5 +10,12 @@
         ],
         "skinnable": true
     },
+    "gallery-popover": {
+        "requires": [
+            "gallery-tipsy",
+            "widget-stdmod"
+        ],
+        "skinnable": true
+    },
     "version": 0.1
 }
