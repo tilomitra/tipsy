@@ -5,11 +5,6 @@
             "jsfiles": [
                 "js/gallery-tipsy.js"
             ]
-        },
-        "gallery-popover": {
-            "jsfiles": [
-                "js/gallery-popover.js"
-            ]
         }
     }
 }
