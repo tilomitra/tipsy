@@ -12,3 +12,9 @@ Contribute
 ----------
 
 File issues, submit feature requests and send pull requests to your heart's content. :)
+
+###What people are saying
+
+> "Y I am a bit Tipsy right now!" -@evangoer
+
+(Sorry Evan, it was too good).
