@@ -4,14 +4,14 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.0/build/cssnormalize/cssnormalize-min.css">
-        <link rel="stylesheet" type="text/css" href="../../../../build/gallery-widget-pointer/assets/gallery-widget-pointer-core.css">
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/gallery-2013.03.27-22-06/build/gallery-widget-pointer/assets/gallery-widget-pointer-core.css">
 
-        <link rel="stylesheet" type="text/css" href="../../../../build/gallery-tipsy/assets/skins/sam/gallery-tipsy.css">
-        <link rel="stylesheet" type="text/css" href="../../../../build/gallery-popover/assets/skins/sam/gallery-popover-skin.css">
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/gallery-2013.03.27-22-06/build/gallery-tipsy/assets/skins/sam/gallery-tipsy.css">
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/gallery-2013.03.27-22-06/build/gallery-popover/assets/skins/sam/gallery-popover-skin.css">
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.0/build/cssgrids-responsive/cssgrids-responsive-min.css">
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.9.0/build/cssbutton/cssbutton-min.css">
         <link rel="stylesheet" type="text/css" href="https://rawgithub.com/tilomitra/yuicss-common/master/ui.css">
-        <link rel="stylesheet" type="text/css" href="https://rawgithub.com/ccampbell/rainbow/master/themes/github.css">
+        <link rel="stylesheet" type="text/css" href="https://rawgithub.com/ccampbell/rainbow/master/themes/obsidian.css">
 
         <script type="text/javascript" src="//use.typekit.net/ajf8ggy.js"></script>
         <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -27,13 +27,13 @@
             }
             .header {
                 padding: 20px;
-                background: rgb(81, 115, 126);
+                background: rgb(54, 45, 100);
             }
             .header h1 {
                 color: #fff;
             }
             .header h2 {
-                color: rgb(145, 175, 192);
+                color: rgb(177, 137, 230);
             }
 
             .notice {
@@ -88,6 +88,10 @@
                 font-size: 170%;
             }
 
+            .centered {
+                text-align: center;
+            }
+
             #popoverButton {
                 background: rgb(30, 66, 148);
                 color: rgb(121, 167, 248);
@@ -102,13 +106,13 @@
 
         <div class="header yui3-u-1">
 
-            <h1 class="yui3-u-1">Y.Tipsy</h1>
+            <h1 class="yui3-u-1">Y.Tipsy &amp; Y.Popover</h1>
             <h2 class="yui3-u">Contextual Tooltips and popovers</h2>
 
         </div>
         
         <div class="content l-centered">        
-            <h2 class="subtitle"><code>Y.Tipsy</code> is a YUI widget for easy tooltips and popovers.</h2>        
+            <h2 class="subtitle"><code>Y.Tipsy</code> is a YUI widget for easy tooltips.</h2>        
             
             <a id="fork" href="https://github.com/tilomitra/tipsy" data-placement="left" data-content="Fork from Github. Really, don't be shy!" class="yui3-button notice">Fork from Github</a>
         </div>
@@ -119,13 +123,23 @@
             <p>You can get <code>Y.Tipsy</code> from the YUI Gallery.</p>
 
             <pre><code data-language="javascript">
+    
     YUI({
-        gallery: 'gallery-2013.03.20-19-59'
+        gallery: 'gallery-2013.03.27-22-06'
     }).use('gallery-tipsy', function (Y) { 
         //Y.Tipsy is loaded and good to go.
     });
             </code></pre>
+            
+            <p>Currently, you need to pull in the CSS file separately. Add this to your <code>head</code> to add the necessary styling:</p>
 
+            <pre><code data-language="css">
+    <!-- This will pull in the pointer from gallery-widget-pointer -->
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/gallery-2013.03.27-22-06/build/gallery-widget-pointer/assets/gallery-widget-pointer-core.css">
+
+    <!-- This will pull in tipsy styles -->
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/gallery-2013.03.27-22-06/build/gallery-tipsy/assets/skins/sam/gallery-tipsy.css">
+            </code></pre>
 
             <h2>Usage</h2>
 
@@ -147,19 +161,6 @@
     tipsy.render();  
             </code></pre>
 
-
-            <h2>Under the hood</h2>
-
-            <p><code>Y.Tipsy</code> is built using the following Widget Extensions:</p>
-
-            <ul>
-                <li><code>WidgetStack</code></li>
-                <li><code>WidgetPositionAlign</code></li>
-                <li><code>WidgetPointer</code></li>
-            </ul>
-
-            <p>As a result, it has all the attributes that are exposed by these extensions in addition to those provided by <code>Y.Widget</code>.</p>
-            
 
             <h3>Pointing to a node</h3>
 
@@ -212,22 +213,31 @@
     });
             </code></pre>
 
-            <h2>Y.Popover</h2>
+            <h2 class="centered">Y.Popover</h2>
             
+            <h2 class="subtitle"><code>Y.Popover</code> inherits <code>Y.Tipsy</code> and adds popover functionality.</h2> 
+
             <p>
-                <a class="popover" href="#" data-placement="below">Y.Popover</a> extends Y.Tipsy 
+                <a class="popover" href="https://github.com/tilomitra/popover/" data-placement="below">Y.Popover</a> extends Y.Tipsy 
                 and mixes in the <code>Y.WidgetStdMod</code> extension to introduce the notion of a header, body and footer. You can use it exactly how you would use <code>Y.Tipsy</code>, but now you have access to three new attributes: <code>headerContent</code>, <code>bodyContent</code>, and <code>footerContent</code>. 
             </p>
 
             <h3>Usage</h3>
 
-            <p>You can get <code>Y.Tipsy</code> from the YUI Gallery (it's not there yet).</p>
+            <p>You can get <code>Y.Popover</code> from the YUI Gallery.</p>
 
             <pre><code data-language="javascript">
     YUI({
+        gallery: 'gallery-2013.03.27-22-06'
     }).use('gallery-popover', function (Y) { 
         //Y.Popover is loaded and good to go.
     });
+            </code></pre>
+
+            <p>Currently, you need to pull in the CSS file separately. Add this to your <code>head</code> to add the necessary styling:</p>
+
+            <pre><code data-language="css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/gallery-2013.03.27-22-06/build/gallery-popover/assets/skins/sam/gallery-popover-skin.css">
             </code></pre>
 
             <a id="popoverButton" class="popover yui3-button" href="#" data-placement="above" data-header="Additional Features" data-content="Here are some additional features that are on the roadmap." data-footer="A little footer.">Popover Demo</a>
@@ -246,6 +256,18 @@
 
     popover.render();
             </code></pre>
+
+            <h2>Under the hood</h2>
+
+            <p><code>Y.Tipsy</code> is built using the following Widget Extensions:</p>
+
+            <ul>
+                <li><code>WidgetStack</code></li>
+                <li><code>WidgetPositionAlign</code></li>
+                <li><code>WidgetPointer</code></li>
+            </ul>
+
+            <p>As a result, it has all the attributes that are exposed by these extensions in addition to those provided by <code>Y.Widget</code>.</p>
 
             
             <h2>See it in action</h2>
@@ -274,29 +296,7 @@
         <script src="http://yui.yahooapis.com/3.9.0/build/yui/yui-debug.js"></script>
         <script>
             YUI({
-                groups: {
-                    gallery: {
-                        base    : '../../../../build/',
-                        patterns: {
-                            'gallery-'   : {},
-                            'gallerycss-': { type: 'css' }
-                        },
-                        modules: {
-                            'gallery-widget-pointer': {
-                                path     : 'gallery-widget-pointer/gallery-widget-pointer.js',
-                            },
-                            'gallery-tipsy': {
-                                path     : 'gallery-tipsy/gallery-tipsy.js',
-                            },
-                            'gallery-popover': {
-                                path     : 'gallery-popover/gallery-popover.js',
-                            }
-                        }
-                    }
-                },
-                
-                filter: 'raw',
-            
+                gallery: 'gallery-2013.03.27-22-06'
             }).use("gallery-tipsy", "gallery-popover", 'event-outside', function(Y) {
 
                 var forkTipsy = new Y.Tipsy({
@@ -332,7 +332,8 @@
         </script>
         <script src="https://rawgithub.com/ccampbell/rainbow/master/js/rainbow.min.js"></script>
         <script src="https://rawgithub.com/ccampbell/rainbow/master/js/language/html.js"></script>
-        <script src="https://rawgithub.com/ccampbell/rainbow/master/js/language/javascript.js"></script>
+        <script src="https://rawgithub.com/ccampbell/rainbow/master/js/language/css.js"></script>
+        <script src="https://rawgithub.com/ccampbell/rainbow/master/js/language/generic.js"></script>
     </body>
     
 </html>
