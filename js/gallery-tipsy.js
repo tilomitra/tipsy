@@ -21,6 +21,7 @@ var Lang = Y.Lang,
 Y.Tipsy = Y.Base.create("tipsy", Y.Widget, [Y.WidgetPointer, Y.WidgetPosition, Y.WidgetPositionAlign, Y.WidgetStack], {
 
     _handles    : [],
+    _timer      : null,
 
     //constructor
     initializer : function(config) {
@@ -64,6 +65,7 @@ Y.Tipsy = Y.Base.create("tipsy", Y.Widget, [Y.WidgetPointer, Y.WidgetPosition, Y
 
     _handleDelegateStart : function (e) {
         var del = this.get('delegate'),
+            delay = this.get('delay' ),
             selector = this.get('selector'),
             hideOn = this.get('hideOn'),
             node = e.currentTarget;
@@ -84,12 +86,20 @@ Y.Tipsy = Y.Base.create("tipsy", Y.Widget, [Y.WidgetPointer, Y.WidgetPosition, Y
         else {
             Y.log('The hideOn attribute should contain an array of events, or an object with keys "selector" (string), and "events" (array of events)');
         }
-
-        this.showTooltip(node);
+        
+        if (delay) {
+            this._timer = Y.later(delay*1000, this, 'showTooltip', node);
+        } else {
+            this.showTooltip(node);
+        }
     },
 
     _handleDelegateEnd: function (e) {
         this.hideTooltip();
+        if (this._timer) {
+            this._timer.cancel();
+            this._timer = null;
+        }
     },
 
     showTooltip : function (node) {
@@ -161,6 +171,10 @@ Y.Tipsy = Y.Base.create("tipsy", Y.Widget, [Y.WidgetPointer, Y.WidgetPosition, Y
 
         zIndex: {
             value: 2
+        },
+        
+        delay: {
+            value: 0
         },
 
         showOn: {
