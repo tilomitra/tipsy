@@ -259,6 +259,9 @@
                     <button id="topbutton" class="yui3-button yui3-tooltip-trigger" data-placement="above" rel="click-tipsy" data-header="A Clicked Popover" data-content="YUI rocks.">Click to activate a popover.</button>
                 </p>
                 <p>
+                    <button id="delaybutton" class="yui3-button yui3-tooltip-trigger" data-placement="above" rel="delay-tipsy" data-header="A delayed Popover" data-content="YUI rocks.">Hover for two seconds to activate a popover.</button>
+                </p>
+                <p>
                     <button id="leftbutton" class="yui3-button yui3-tooltip-trigger" data-placement="left" rel="tipsy" data-content="Ut eget nunc nulla. <br/>Curabitur mollis, purus eu sodales luctus<br/>, metus sem sagittis justo">Tooltip positioned to the left with a lot of content</button>
                 </p>
                 <p>
@@ -310,6 +313,14 @@
                 });
                 regularTipsy.render();  
 
+
+                var delayTipsy = new Y.Popover({
+                    selector: "[rel='delay-tipsy']",
+                    zIndex: 2,
+                    delay:  2
+                });
+
+                delayTipsy.render();
 
                 var clickTipsy = new Y.Popover({
                     selector: "[rel='click-tipsy']",
